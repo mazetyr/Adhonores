@@ -14,3 +14,39 @@ int             exec(char *str)
     }
   return (0);
 }
+
+int mini(char **envp)
+{
+  char *str;
+  static char buffer[BUFFER_SIZE];
+  int i;
+  int k;
+  int j;
+  char *bin;
+
+  i = 0;
+  j = 0;
+  my_putstr("$>");
+  str = malloc(BUFFER_SIZE * sizeof(char));
+  bin  = "/bin/";
+  k = read (0, buffer, BUFFER_SIZE);
+  if (k == 0)
+    return (1);
+  /*  while (j != 5)                                                                                                                                                                          
+    {                                                                                                                                                                                         
+      str[j] = bin[j];                                                                                                                                                                        
+      j++;                                                                                                                                                                                    
+      }*/
+  while (buffer[i] != '\0')
+    {
+      str[j] = buffer[i];
+      i = i + 1;
+      j++;
+    }
+  //str[j] = '\0';                                                                                                                                                                            
+  printf("%s", str);
+  my_exec(str, envp);
+  free(str);
+  mini(envp);
+  return (0);
+}
