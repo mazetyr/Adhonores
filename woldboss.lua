@@ -19,22 +19,6 @@ int     exec(char *str)
   return (0);
 }
 
-char    *bin()
-{
-  char  *bin;
-  char  *str;
-  int   j;
-
-  bin = "/bin/";
-  while (j != 5)
-    {
-      str[j] = bin[j];
-      j++;
-    }
-  my_putstr(str);
-  return(str);
-}
-
 int     mini()
 {
   char  *str;
@@ -47,10 +31,10 @@ int     mini()
   j = 5;
   my_putstr("$>");
   str = malloc(BUFFER_SIZE * sizeof(char));
-    k = read (0, buffer, BUFFER_SIZE);
+  k = read (0, buffer, BUFFER_SIZE);
   if (k == 0)
     return (1);
-  str = bin();
+  str = "/bin/";
   while (buffer[i] != '\0')
     {
       str[j] = buffer[i];
