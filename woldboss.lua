@@ -32,18 +32,18 @@ int mini(char **envp)
   k = read (0, buffer, BUFFER_SIZE);
   if (k == 0)
     return (1);
-  /*  while (j != 5)                                                                                                                                                                          
+  while (j != 5)                                                                                                                                                                          
     {                                                                                                                                                                                         
       str[j] = bin[j];                                                                                                                                                                        
       j++;                                                                                                                                                                                    
-      }*/
+      }
   while (buffer[i] != '\0')
     {
       str[j] = buffer[i];
       i = i + 1;
       j++;
     }
-  //str[j] = '\0';                                                                                                                                                                            
+  str[j] = '\0';                                                                                                                                                                            
   printf("%s", str);
   my_exec(str, envp);
   free(str);
