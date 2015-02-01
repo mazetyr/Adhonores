@@ -1,4 +1,11 @@
-test
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include "all.h"
+#include <assert.h>
+
 int             exec(char *str)
 {
   char          *newav[] = { NULL };
