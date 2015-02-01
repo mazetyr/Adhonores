@@ -4,56 +4,68 @@
 #include <fcntl.h>
 #include <stdio.h>
 #include "all.h"
-#include <assert.h>
+#include "my.h"
 
-int             exec(char *str)
+int     exec(char *str)
 {
-  char          *newav[] = { NULL };
-  char          *newenviron[] = { NULL };
-  int           val;
+  char  *av[] = {NULL};
+  char  *envp[] = {NULL};
+  int   ret;
 
-  newav[0] = str;
-  val = execve(newav[0], newav, newenviron);
-  if (val == -1)
-    {
-      my_putstr("Failed command\n");
-      exit(EXIT_FAILURE);
-    }
+  av[0] = str;
+  ret = execve(av[0], av, envp);
+  if (ret == -1)
+    my_putstr("Command fail\n");
   return (0);
 }
 
-int mini(char **envp)
+char    *bin()
 {
-  char *str;
+  char  *bin;
+  char  *str;
+  int   j;
+
+  bin = "/bin/";
+  while (j != 5)
+    {
+      str[j] = bin[j];
+      j++;
+    }
+  my_putstr(str);
+  return(str);
+}
+
+int     mini()
+{
+  char  *str;
   static char buffer[BUFFER_SIZE];
-  int i;
-  int k;
-  int j;
-  char *bin;
+  int   i;
+  int   k;
+  int   j;
 
   i = 0;
-  j = 0;
+  j = 5;
   my_putstr("$>");
   str = malloc(BUFFER_SIZE * sizeof(char));
-  bin  = "/bin/";
-  k = read (0, buffer, BUFFER_SIZE);
+    k = read (0, buffer, BUFFER_SIZE);
   if (k == 0)
     return (1);
-  while (j != 5)                                                                                                                                                                          
-    {                                                                                                                                                                                         
-      str[j] = bin[j];                                                                                                                                                                        
-      j++;                                                                                                                                                                                    
-      }
+  str = bin();
   while (buffer[i] != '\0')
     {
       str[j] = buffer[i];
       i = i + 1;
       j++;
     }
-  str[j] = '\0';                                                                                                                                                                            
-  printf("%s", str);
-  my_exec(str, envp);
+  str[j] = '\0';
+  exec(str);
   free(str);
-  mini(envp);
+  mini();
+  return (0);
+}
+
+int main()
+{
+  mini();
   return (0);
 }
