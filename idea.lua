@@ -41,3 +41,8 @@ int     main()
 ** Si on envoye "entrer" à read, elle retour une valeur différente,                                                                                                                           
 ** Si c'est le cas on remove le char ciblé                                                                                                                                                    
 */
+
+Char *cl;
+
+tgetstr("cl", NULL);
+tputs(cl, 1, my_putchar); //ou tputs(cl, 1, my_putchar);
