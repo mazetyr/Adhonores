@@ -88,7 +88,7 @@ int main()
   menu[0] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
   menu[1] = "\033[1;33m !! \033[0m\033[1;35mBienvenue dans le Jeu des Allumettes \033[0m\033[1;33m!!\033[0m\n";
   menu[2] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
-  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Indiquer la ligne puis le nombre d'allumettes que vois souhaiter enlever.\n\n";
+  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Indiquer la ligne puis le nombre d'allumettes que vous souhaitez enlever.\n\n";
   menu[4] = "\033[1;37m\n Bonne Chance et Bon Jeu \033[0m\n\n";
   alu[0] = "   |\n";
   alu[1] = "  |||\n";
