@@ -1,62 +1,114 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "allum.h"
+#include "my.h"
 
-int     main()
+#define IA (0)
+#define PLAYER (1)
+
+void    result(int player)
 {
-  char  *menu[5];
-  char  *alu[4];
-  char  *str;
-  int   c;
-  int   z;
-  static char buffer[500];
-  int   i;
-  int   k;
+  int   nb_ligne;
 
-  z = 0;
+  nb_ligne = 0;
+  if (nb_ligne == 1)
+    {
+      if (player == IA)
+        {
+          my_putstr("\033[1;31m\n\n YOU WIN !!!!\033[0m");
+          exit(0);
+        }
+      else if (player == PLAYER)
+        {
+          my_putstr("\033[1;31m\n\n YOU LOOSE !!!!\033[0m");
+          exit(0);
+        }
+    }
+}
+
+void    aff(char **str, int nb)
+{
+  int   i;
+
+  i = 0;
+  while (i != nb)
+    {
+      my_putstr(str[i]);
+      i++;
+    }
+}
+
+int     count(char **alu)
+{
+  int   i;
+  int   nb_alu;
+  int   ligne;
+
+  nb_alu = 0;
+  i = 0;
+  ligne = 0;
+  while (alu[ligne][i] != '\n' && ligne != 4)
+    {
+      if (alu[ligne][i] == '|')
+        nb_alu++;
+      i++;
+      if (alu[ligne][i] == '\n')
+        {
+          my_put_nbr(nb_alu);
+          my_putchar('\n');
+          ligne++;
+          i = 0;
+        }
+    }
+  return (nb_alu);
+}
+
+int     ia_turn(char **alu)
+{
+  int   nb_alu;
+  int   alu_ia;
+
+  result(IA);
+  nb_alu = count(alu);
+  alu_ia = nb_alu % 4;
+  alu[alu_ia] = "\n";
+  my_putstr("\n\nordi turn:\n");
+  aff(alu, 4);
+  return (0);
+}
+
+int main()
+{
+  char *menu[5];
+  char *alu[4];
+  char *str;
+  int k;
+
   menu[0] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
   menu[1] = "\033[1;33m !! \033[0m\033[1;35mBienvenue dans le Jeu des Allumettes \033[0m\033[1;33m!!\033[0m\n";
   menu[2] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
-  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Afin de vous déplacer utilisez les touches z et s. Pour supprimer une allumette appuyer sur entrer.\n\n";
+  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Indiquer la ligne puis le nombre d'allumettes que vois souhaiter enlever.\n\n";
   menu[4] = "\033[1;37m\n Bonne Chance et Bon Jeu \033[0m\n\n";
-  alu[0] = "    |    ";
-  alu[1] = "   |||   ";
-  alu[2] = "  |||||  ";
-  alu[3] = " ||||||| ";
-  while (z < 5)
+  alu[0] = "   |\n";
+  alu[1] = "  |||\n";
+  alu[2] = " |||||\n";
+  alu[3] = "|||||||\n";
+  aff(menu, 5);
+  aff(alu, 4);
+  while (42)
     {
-      my_putstr(menu[z]);
-      z++;
-    }
-  z = 0;
-  while (z < 4)
-    {
-      my_putstr(alu[z]);
-      my_putchar('\n');
-      z ++;
-    }
-  i = 0;
-  my_putstr("\nVeuillez choisir une ligne : ");
-  str = malloc(500 * sizeof(char));
-  k = read (0, buffer, 500);
-  if (k == 0)
-    return (1);
-  while (buffer[i] != '\0')
-    {
-      str[i] = buffer[i];
-      i = i + 1;
-    }
-  str[i] = '\0';
-  c = 0;
-  my_putstr("Vous avez choisi la ligne : ");
-  my_put_nbr((str[0] - 48));
-  my_putstr("\n\n");
-  while (c < 4)
-    {
-      if (c == (str[0] - 48))
-          alu[c] = "";
-      my_putstr(alu[c]);
-      my_putchar('\n');
-      c++;
+      result(PLAYER);
+      my_putstr("\nVeuillez choisir une ligne : ");
+      str = malloc(500 * sizeof(char));
+      k = read (0, str, 500);
+      if (k == 0)
+        return (1);
+      my_putstr("Vous avez choisi la ligne : ");
+      my_put_nbr((str[0] - 49));
+      my_putstr("\n\n");
+      alu[(str[0] - 49)] = "\n";
+      aff(alu, 4);
+      ia_turn(alu);
     }
 }
