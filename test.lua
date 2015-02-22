@@ -78,18 +78,12 @@ int     ia_turn(char **alu)
   return (0);
 }
 
-int main()
+int jeux()
 {
-  char *menu[5];
   char *alu[4];
   char *str;
   int k;
 
-  menu[0] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
-  menu[1] = "\033[1;33m !! \033[0m\033[1;35mBienvenue dans le Jeu des Allumettes \033[0m\033[1;33m!!\033[0m\n";
-  menu[2] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
-  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Indiquer la ligne puis le nombre d'allumettes que vous souhaitez enlever.\n\n";
-  menu[4] = "\033[1;37m\n Bonne Chance et Bon Jeu \033[0m\n\n";
   alu[0] = "   |\n";
   alu[1] = "  |||\n";
   alu[2] = " |||||\n";
@@ -111,4 +105,16 @@ int main()
       aff(alu, 4);
       ia_turn(alu);
     }
+}
+
+int main()
+{
+  char *menu[5];
+
+  menu[0] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
+  menu[1] = "\033[1;33m !! \033[0m\033[1;35mBienvenue dans le Jeu des Allumettes \033[0m\033[1;33m!!\033[0m\n";
+  menu[2] = "\033[1;33m !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\033[0m\n";
+  menu[3] = "\033[1;31m\n\n Règles :\033[1m\n\n Indiquer la ligne puis le nombre d'allumettes que vous souhaitez enlever.\n\n";
+  menu[4] = "\033[1;37m\n Bonne Chance et Bon Jeu \033[0m\n\n";
+  jeux();
 }
