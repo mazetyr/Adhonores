@@ -84,7 +84,9 @@ int jeux()
   char *alu[4];
   char *str;
   int k;
+  int i;
 
+  i = 0;
   alu[0] = "   |\n";
   alu[1] = "  |||\n";
   alu[2] = " |||||\n";
@@ -99,6 +101,14 @@ int jeux()
       k = read (0, str, 500);
       if (k == 0)
         return (1);
+      while (str[i] != ' \0')
+        {
+          if (str[i] >= 'a' || str[i] <= 'z')
+            str[i] = "";
+          if (str[i] >= 'A' || str[i] <= 'Z')
+            str[i] = "";
+          i++;
+        }
       my_putstr("Vous avez choisi la ligne : ");
       my_put_nbr((str[0] - 49));
       my_putstr("\n\n");
