@@ -59,6 +59,7 @@ int     count(char **alu) // compte le nombre d'allumettes restante
           my_putchar('\n');
           ligne++;
           i = 0;
+          nb_alu = 0;
         }
     }
   return (nb_alu);
