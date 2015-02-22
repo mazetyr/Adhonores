@@ -7,7 +7,7 @@
 #define IA (0)
 #define PLAYER (1)
 
-void    result(int player) // savoir qui a gagner, nécessite de savoir le nombre de ligne avec allumette restante
+void    result(int player)
 {
   int   nb_ligne;
 
@@ -27,7 +27,7 @@ void    result(int player) // savoir qui a gagner, nécessite de savoir le nombr
     }
 }
 
-void    aff(char **str, int nb) // permet d'afficher les différents char **
+void    aff(char **str, int nb)
 {
   int   i;
 
@@ -39,7 +39,7 @@ void    aff(char **str, int nb) // permet d'afficher les différents char **
     }
 }
 
-int     count(char **alu) // compte le nombre d'allumettes restante
+int     count(char **alu)
 {
   int   i;
   int   nb_alu;
@@ -65,7 +65,7 @@ int     count(char **alu) // compte le nombre d'allumettes restante
   return (nb_alu);
 }
 
-int     ia_turn(char **alu) // l'ia
+int     ia_turn(char **alu)
 {
   int   nb_alu;
   int   alu_ia;
