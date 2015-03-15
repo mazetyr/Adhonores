@@ -1,3 +1,5 @@
+COMPILE: -L/usr/lib64 -lmlx -L/usr/lib64/X11 -lXext -lX11
+
 #include <mlx.h>
 #include <stdlib.h>
 #include <stdio.h>
