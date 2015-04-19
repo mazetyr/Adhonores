@@ -8,3 +8,10 @@
 -fonction handlerBuyIngredient
 -
 -fail potentiel sur sysyem
+
+
+par certain
+
+fonction handlePacket
+
+si cmid < 0 overflow? a vérifier
