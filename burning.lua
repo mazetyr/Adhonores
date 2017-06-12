@@ -1,4 +1,4 @@
--- $Id: burningcrusade.lua 4193 2013-04-20 18:44:04Z dynaletik $
+.-- $Id: burningcrusade.lua 4193 2013-04-20 18:44:04Z dynaletik $
 local AL = LibStub("AceLocale-3.0"):GetLocale("AtlasLoot");
 local ALIL = AtlasLoot_IngameLocales;
 local BabbleBoss = AtlasLoot_GetLocaleLibBabble("LibBabble-Boss-3.0")
